@@ -1,8 +1,7 @@
 #include "CoordinateConvert.h"
 #define M_PI 3.14159265358979323846
 #define REDTEAM
-
-
+//imdhj
 bool CameraCoorToPixelCoor(CToFCamera::Coord3D CameraCoor, float* Row, float* Column)
 {
 	float thetaRow, thetaColumn;
@@ -10,7 +9,7 @@ bool CameraCoorToPixelCoor(CToFCamera::Coord3D CameraCoor, float* Row, float* Co
 	thetaColumn = atan(CameraCoor.x / CameraCoor.z) / M_PI * 180;
 	*Row = thetaRow * height / vFov + height / 2;
 	*Column = thetaColumn * width / hFov + width / 2;
-	//×ø±ê²»ÔÚÆÁÄ»ÄÚ
+	//åæ ‡ä¸åœ¨å±å¹•å†…
 	if (*Row < 0 || *Row>height || *Column<0 || *Column>width)
 		return false;
 	return true;
@@ -26,7 +25,7 @@ CToFCamera::Coord3D WorldCoorToCameraCoor(cameraParam _cameraParam, CToFCamera::
 		CameraCoor.z = 0;
 		return CameraCoor;
 	}
-	//Ïà¶Ô×ø±ê
+	//ç›¸å¯¹åæ ‡
 	//relativeCoor.x = WorldCoor.x - _cameraParam.worldX;
 	//relativeCoor.y = WorldCoor.y - _cameraParam.worldY;
 	//relativeCoor.z = WorldCoor.z - _cameraParam.worldZ;
@@ -46,7 +45,7 @@ CToFCamera::Coord3D WorldCoorToCameraCoor(cameraParam _cameraParam, CToFCamera::
 		relativeCoor.y * (-cos(_cameraParam.yaw / 180 * M_PI) * sin(_cameraParam.pitch / 180 * M_PI)) + relativeCoor.z * cos(_cameraParam.pitch / 180 * M_PI));
 
 
-	////×ª»»ÎªÏà»ú×ø±ê
+	////è½¬æ¢ä¸ºç›¸æœºåæ ‡
 	//CameraCoor.x = relativeCoor.x * cos(_cameraParam.yaw / 180 * M_PI) + relativeCoor.y * sin(_cameraParam.yaw / 180 * M_PI);
 
 	//CameraCoor.y = relativeCoor.x * (-sin(_cameraParam.yaw / 180 * M_PI) * cos(_cameraParam.pitch / 180 * M_PI)) +
